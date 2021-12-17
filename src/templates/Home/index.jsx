@@ -12,7 +12,7 @@ export class Home extends Component {
     posts: [],
     allPosts: [],
     page: 0,
-    postsPerPage: 2,
+    postsPerPage: 10,
     searchValue: ''
   };
 
@@ -69,7 +69,7 @@ export class Home extends Component {
           {!!searchValue &&
             <h1>Search value: {searchValue}</h1>
           }
-          <TextInput searchValue={searchValue} handleChange={this.handleChange} />
+          <TextInput inputValue={searchValue} actionFn={this.handleChange} />
         </div>
 
         {filteredPosts.length > 0 ? (
