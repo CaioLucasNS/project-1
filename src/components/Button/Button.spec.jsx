@@ -11,7 +11,7 @@ describe('<Button />', () => {
         // screen.query - n levanta um erro se não achar o elemento
         // screen.get - quando eu sei que aquele elemento deve estar na tela
         const button = screen.getByRole('button', { name: /load more/i });
-        
+
         expect.assertions(1)
         expect(button).toBeInTheDocument();
     });
@@ -37,11 +37,18 @@ describe('<Button />', () => {
         const button = screen.getByRole('button', { name: /load more/i });
         expect(button).toBeDisabled();
     });
-    
+
     // testando quando o botão estiver enabled
     it('should be enabled when disabled is false', () => {
         render(<Button text="Load more" disabled={false} />);
         const button = screen.getByRole('button', { name: /load more/i });
         expect(button).toBeEnabled();
+    });
+
+    // criando snapshot
+    it('should match snapshot', () => {
+        
+        const { container } = render(<Button text="Load more" disabled={false} />);
+        expect(container.firstChild).toMatchSnapshot();
     });
 });
